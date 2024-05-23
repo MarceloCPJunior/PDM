@@ -1,11 +1,15 @@
 package iesb.app.sqlliteapp.model;
 
-public class ClienteVO {
+public class ClienteVO extends Entidade {
     private int id;
     private String nome;
     private String email;
 
     public ClienteVO() {
+    }
+
+    public ClienteVO(String nome) {
+        this.nome = nome;
     }
 
     public ClienteVO(int id, String nome, String email) {

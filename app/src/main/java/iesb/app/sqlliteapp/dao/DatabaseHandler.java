@@ -16,6 +16,7 @@ import iesb.app.sqlliteapp.model.ClienteVO;
 import iesb.app.sqlliteapp.model.Entidade;
 
 public class DatabaseHandler extends SQLiteOpenHelper {
+    private static DatabaseHandler databaseHandler;
     private static final int DATABASE_VERSION = 1;
 
     private static final String DATABASE_NAME = "LOJA_DB";
@@ -30,6 +31,11 @@ public class DatabaseHandler extends SQLiteOpenHelper {
 
     public DatabaseHandler(Context context) {
         super(context, DATABASE_NAME, null, DATABASE_VERSION);
+        databaseHandler = this;
+    }
+
+    public static DatabaseHandler getDatabaseHandler() {
+        return databaseHandler;
     }
 
     @Override
@@ -48,7 +54,7 @@ public class DatabaseHandler extends SQLiteOpenHelper {
     }
 
     // metodos de negocio
-    public void addCliente(ClienteVO clienteVO) throws IllegalAccessException {
+    public void addCliente(ClienteVO clienteVO) {
         SQLiteDatabase db = this.getWritableDatabase();
         ContentValues contentValues = new ContentValues();
 
