@@ -1,0 +1,1 @@
+sqlite manager add-on
