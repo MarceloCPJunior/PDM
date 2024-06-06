@@ -62,7 +62,7 @@ public class ClienteDAO extends SQLiteOpenHelper {
         db.close();
     }
 
-    public void updateCliente(ClienteVO clienteVO) {
+    public int updateCliente(ClienteVO clienteVO) {
         int qtdRegistrosAtualizados = 0;
         SQLiteDatabase db = this.getWritableDatabase();
 
@@ -70,22 +70,24 @@ public class ClienteDAO extends SQLiteOpenHelper {
 
         contentValues.put(NOME, clienteVO.getNome());
 
-        qtdRegistrosAtualizados = db.update(TB_CLIENTES, contentValues, KEY_ID + " = ? ", new String[]{String.valueOf(clienteVO.getId())});
+        qtdRegistrosAtualizados = db.update(TB_CLIENTES, contentValues, EMAIL + " = ? ", new String[]{String.valueOf(clienteVO.getEmail())});
 
         db.close();
+        return qtdRegistrosAtualizados;
     }
 
-    public void deleteCliente(ClienteVO clienteVO) {
+    public int deleteCliente(ClienteVO clienteVO) {
         int qtdRegistrosAtualizados = 0;
         SQLiteDatabase db = this.getWritableDatabase();
 
         ContentValues contentValues = new ContentValues();
 
-        contentValues.put(NOME, clienteVO.getNome());
+        contentValues.put(EMAIL, clienteVO.getNome());
 
-        qtdRegistrosAtualizados = db.update(TB_CLIENTES, contentValues, KEY_ID + " = ? ", new String[]{String.valueOf(clienteVO.getId())});
+        qtdRegistrosAtualizados = db.delete(TB_CLIENTES, EMAIL + " = ? ", new String[]{String.valueOf(clienteVO.getEmail())});
 
         db.close();
+        return qtdRegistrosAtualizados;
     }
 
     public int getCountClientes() {

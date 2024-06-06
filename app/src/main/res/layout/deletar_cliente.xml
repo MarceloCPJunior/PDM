@@ -9,12 +9,12 @@
     android:layout_height="match_parent">
 
     <Button
-        android:id="@+id/menu"
+        android:id="@+id/menu_deletar"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginLeft="-112dp"
         android:backgroundTint="@color/gray"
-        android:onClick="btnOnClickMenu"
+        android:onClick="btnOnClickParaMenu"
         android:text="←"
         android:textColor="@color/white"
         android:textColorLink="#FFFFFF"
@@ -24,7 +24,7 @@
         tools:layout_editor_absoluteY="262dp" />
 
     <TextView
-        android:id="@+id/titulo"
+        android:id="@+id/titulo_deletar"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textSize="30dp"
@@ -44,11 +44,11 @@
         tools:layout_editor_absoluteX="43dp"
         tools:layout_editor_absoluteY="59dp" />
     <Button
-        android:id="@+id/cadastrar"
+        android:id="@+id/deletar"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_margin="20dp"
-        android:onClick="btnOnClickCadastrarCliente"
+        android:onClick="btnOnClickDeletar"
         android:text="Deletar"
         android:textColor="@color/black"
         android:backgroundTint="@color/white"

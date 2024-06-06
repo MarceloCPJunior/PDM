@@ -9,12 +9,12 @@
     android:layout_height="match_parent">
 
     <Button
-        android:id="@+id/menu"
+        android:id="@+id/menu_editar"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginLeft="-112dp"
         android:backgroundTint="@color/gray"
-        android:onClick="btnOnClickMenu"
+        android:onClick="btnOnClickParaMenu"
         android:text="←"
         android:textColor="@color/white"
         android:textColorLink="#FFFFFF"
@@ -24,7 +24,7 @@
         tools:layout_editor_absoluteY="262dp" />
 
     <TextView
-        android:id="@+id/titulo"
+        android:id="@+id/titulo_editar"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textSize="30dp"
@@ -33,7 +33,7 @@
         android:layout_margin="60dp"/>
 
     <EditText
-        android:id="@+id/nome"
+        android:id="@+id/nome_editar"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:ems="10"
@@ -45,7 +45,7 @@
         tools:layout_editor_absoluteY="59dp" />
 
     <EditText
-        android:id="@+id/email"
+        android:id="@+id/email_editar"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textColor="@color/white"
@@ -57,7 +57,7 @@
         tools:layout_editor_absoluteY="104dp" />
 
     <Button
-        android:id="@+id/cadastrar"
+        android:id="@+id/editar"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_margin="20dp"

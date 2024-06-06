@@ -9,12 +9,12 @@
     android:layout_height="match_parent">
 
     <Button
-        android:id="@+id/menu"
+        android:id="@+id/menu_listar"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginLeft="-112dp"
         android:backgroundTint="@color/gray"
-        android:onClick="btnOnClickMenu"
+        android:onClick="btnOnClickParaMenu"
         android:text="←"
         android:textColor="@color/white"
         android:textColorLink="#FFFFFF"
@@ -24,6 +24,7 @@
         tools:layout_editor_absoluteY="262dp" />
 
     <TextView
+        android:id="@+id/titulo_listar"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginBottom="30dp"

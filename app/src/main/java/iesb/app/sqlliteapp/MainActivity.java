@@ -7,6 +7,7 @@ import android.util.Log;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.activity.EdgeToEdge;
 import androidx.appcompat.app.AppCompatActivity;
@@ -15,6 +16,7 @@ import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
 import androidx.recyclerview.widget.RecyclerView;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import iesb.app.sqlliteapp.dao.ClienteDAO;
@@ -34,8 +36,8 @@ public class MainActivity extends AppCompatActivity {
         ClienteDAO db = new ClienteDAO(this);
         Log.d("Insert: ", "Inserindo cliente...");
 
-        EditText nomeEditText = (EditText) findViewById(R.id.nome);
-        EditText emailEditText = (EditText) findViewById(R.id.email);
+        EditText nomeEditText = (EditText) findViewById(R.id.nome_cadastro);
+        EditText emailEditText = (EditText) findViewById(R.id.email_cadastro);
 
         ClienteVO vo = new ClienteVO();
         vo.setNome(nomeEditText.getText().toString());
@@ -43,27 +45,63 @@ public class MainActivity extends AppCompatActivity {
         db.addCliente(vo);
     }
 
-    public void btnOnClickCadastro(View view) {
-        setContentView(R.layout.cadastro_cliente);
-    }
-
-    public void btnOnClickListar(View view) {
+    public void btnOnClickEditar(View view) {
         ClienteDAO db = new ClienteDAO(this);
-        RecyclerView listaCliente = findViewById(R.id.lista);
 
-        setContentView(R.layout.listar_cliente);
+        EditText nomeEditText = (EditText) findViewById(R.id.nome_editar);
+        EditText emailEditText = (EditText) findViewById(R.id.email_editar);
+        Log.d("Edit: ", "Editando cliente " + emailEditText.getText().toString());
 
-    }
+        ClienteVO vo = new ClienteVO();
+        vo.setNome(nomeEditText.getText().toString());
+        vo.setEmail(emailEditText.getText().toString());
 
-    public void btnOnClickMenu(View view) {
-        setContentView(R.layout.activity_main);
+        int editados = db.updateCliente(vo);
+
+        if(editados>0) {
+            Toast.makeText(getApplicationContext(), "Editado com sucesso!", Toast.LENGTH_SHORT).show();
+        } else {
+            Toast.makeText(getApplicationContext(), "Nenhum cliente encontrado!", Toast.LENGTH_SHORT).show();
+        }
     }
 
     public void btnOnClickDeletar(View view) {
+        ClienteDAO db = new ClienteDAO(this);
+
+        EditText emailEditText = (EditText) findViewById(R.id.email_deletar);
+        Log.d("Edit: ", "Deletando cliente " + emailEditText.getText().toString());
+
+        ClienteVO vo = new ClienteVO();
+        vo.setEmail(emailEditText.getText().toString());
+        int deletados = db.deleteCliente(vo);
+        if(deletados>0) {
+            Toast.makeText(getApplicationContext(), "Deletado com sucesso!", Toast.LENGTH_SHORT).show();
+        } else {
+            Toast.makeText(getApplicationContext(), "Nenhum cliente encontrado!", Toast.LENGTH_SHORT).show();
+        }
+    }
+
+    public void btnOnClickListar(View view) {
+        setContentView(R.layout.listar_cliente);
+
+        RecyclerView listaCliente = findViewById(R.id.lista);
+        ClienteDAO db = new ClienteDAO(this);
+        List<ClienteVO> clientes = db.getAllClientes();
+    }
+
+    public void btnOnClickParaCadastro(View view) {
+        setContentView(R.layout.cadastro_cliente);
+    }
+
+    public void btnOnClickParaMenu(View view) {
+        setContentView(R.layout.activity_main);
+    }
+
+    public void btnOnClickParaDeletar(View view) {
         setContentView(R.layout.deletar_cliente);
     }
 
-    public void btnOnClickEditar(View view) {
+    public void btnOnClickParaEditar(View view) {
         setContentView(R.layout.deletar_cliente);
     }
 
