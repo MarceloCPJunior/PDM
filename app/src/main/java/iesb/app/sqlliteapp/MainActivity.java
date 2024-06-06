@@ -29,7 +29,6 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         EdgeToEdge.enable(this);
         setContentView(R.layout.activity_main);
-
     }
 
     public void btnOnClickCadastrarCliente(View view) {
@@ -58,7 +57,7 @@ public class MainActivity extends AppCompatActivity {
 
         int editados = db.updateCliente(vo);
 
-        if(editados>0) {
+        if (editados > 0) {
             Toast.makeText(getApplicationContext(), "Editado com sucesso!", Toast.LENGTH_SHORT).show();
         } else {
             Toast.makeText(getApplicationContext(), "Nenhum cliente encontrado!", Toast.LENGTH_SHORT).show();
@@ -74,7 +73,7 @@ public class MainActivity extends AppCompatActivity {
         ClienteVO vo = new ClienteVO();
         vo.setEmail(emailEditText.getText().toString());
         int deletados = db.deleteCliente(vo);
-        if(deletados>0) {
+        if (deletados > 0) {
             Toast.makeText(getApplicationContext(), "Deletado com sucesso!", Toast.LENGTH_SHORT).show();
         } else {
             Toast.makeText(getApplicationContext(), "Nenhum cliente encontrado!", Toast.LENGTH_SHORT).show();
@@ -83,10 +82,20 @@ public class MainActivity extends AppCompatActivity {
 
     public void btnOnClickListar(View view) {
         setContentView(R.layout.listar_cliente);
-
-        RecyclerView listaCliente = findViewById(R.id.lista);
         ClienteDAO db = new ClienteDAO(this);
         List<ClienteVO> clientes = db.getAllClientes();
+
+        TextView listaNome = findViewById(R.id.listar_nome);
+        TextView listaEmail = findViewById(R.id.listar_email);
+        StringBuilder stringClienteNome = new StringBuilder();
+        StringBuilder stringClienteEmail = new StringBuilder();
+
+        for (ClienteVO cliente : clientes) {
+            stringClienteNome.append(cliente.getNome()+"\n");
+            stringClienteEmail.append(cliente.getEmail()+"\n");
+        }
+        listaNome.setText(stringClienteNome.toString());
+        listaEmail.setText(stringClienteEmail.toString());
     }
 
     public void btnOnClickParaCadastro(View view) {
@@ -102,7 +111,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void btnOnClickParaEditar(View view) {
-        setContentView(R.layout.deletar_cliente);
+        setContentView(R.layout.editar_cliente);
     }
 
 }
