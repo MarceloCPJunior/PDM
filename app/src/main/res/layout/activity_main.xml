@@ -5,51 +5,85 @@
     android:id="@+id/main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:gravity="center"
     android:background="@color/gray"
+    android:gravity="center_horizontal"
     android:orientation="vertical"
     tools:context=".MainActivity">
 
     <TextView
-        android:id="@+id/titulo"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:textSize="30dp"
-        android:textColor="@color/red"
-        android:text="Cadastro de Cliente"
-        android:layout_margin="60dp"/>
+        android:layout_marginTop="100dp"
+        android:layout_marginBottom="100dp"
+        android:text="Menu APP"
+        android:textColor="@color/grayClean"
+        android:textSize="30dp" />
 
-    <EditText
-        android:id="@+id/nome"
+    <LinearLayout
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:ems="10"
-        android:textColor="@color/white"
-        android:inputType="text"
-        android:hint="Nome"
-        android:textColorHint="@color/white"
-        tools:layout_editor_absoluteX="43dp"
-        tools:layout_editor_absoluteY="59dp" />
+        android:orientation="horizontal">
 
-    <EditText
-        android:id="@+id/email"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:textColor="@color/white"
-        android:textColorHint="@color/white"
-        android:ems="10"
-        android:inputType="text"
-        android:hint="Email"
-        tools:layout_editor_absoluteX="43dp"
-        tools:layout_editor_absoluteY="104dp" />
+        <Button
+            android:id="@+id/cadastro"
+            android:layout_width="120dp"
+            android:layout_height="50dp"
+            android:layout_margin="20dp"
+            android:backgroundTint="@color/white"
+            android:onClick="btnOnClickCadastro"
+            android:text="Cadastrar"
+            android:textColor="@color/black"
+            android:textColorLink="#FFFFFF"
+            app:rippleColor="#F4F1F1"
+            tools:layout_editor_absoluteX="160dp"
+            tools:layout_editor_absoluteY="262dp" />
 
-    <Button
-        android:id="@+id/cadastrar"
+        <Button
+            android:id="@+id/listar"
+            android:layout_width="120dp"
+            android:layout_height="50dp"
+            android:layout_margin="20dp"
+            android:backgroundTint="@color/white"
+            android:onClick="btnOnClickListar"
+            android:text="Listar"
+            android:textColor="@color/black"
+            android:textColorLink="#FFFFFF"
+            app:rippleColor="#F4F1F1"
+            tools:layout_editor_absoluteX="160dp"
+            tools:layout_editor_absoluteY="262dp" />
+    </LinearLayout>
+
+    <LinearLayout
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_margin="20dp"
-        android:onClick="btnOnClickCadastrarCliente"
-        android:text="Cadastrar"
-        tools:layout_editor_absoluteX="160dp"
-        tools:layout_editor_absoluteY="262dp" />
+        android:orientation="horizontal">
+
+        <Button
+            android:id="@+id/deletar"
+            android:layout_width="120dp"
+            android:layout_height="50dp"
+            android:layout_margin="20dp"
+            android:backgroundTint="@color/white"
+            android:onClick="btnOnClickDeletar"
+            android:text="Deletar"
+            android:textColor="@color/black"
+            android:textColorLink="#FFFFFF"
+            app:rippleColor="#F4F1F1"
+            tools:layout_editor_absoluteX="160dp"
+            tools:layout_editor_absoluteY="262dp" />
+
+        <Button
+            android:id="@+id/editar"
+            android:layout_width="120dp"
+            android:layout_height="50dp"
+            android:layout_margin="20dp"
+            android:backgroundTint="@color/white"
+            android:onClick="btnOnClickEditar"
+            android:text="Editar"
+            android:textColor="@color/black"
+            android:textColorLink="#FFFFFF"
+            app:rippleColor="#F4F1F1"
+            tools:layout_editor_absoluteX="160dp"
+            tools:layout_editor_absoluteY="262dp" />
+    </LinearLayout>
 </LinearLayout>
